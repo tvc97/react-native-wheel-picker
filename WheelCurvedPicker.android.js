@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ColorPropType, requireNativeComponent } from 'react-native';
 
+const defaultItemStyle = { color: 'white', fontSize: 26 };
+
 const WheelCurvedPickerNativeInterface = {
   name: 'WheelCurvedPicker',
   propTypes: {
@@ -16,6 +18,9 @@ const WheelCurvedPickerNativeInterface = {
     onValueChange: PropTypes.func,
     selectedValue: PropTypes.any,
     selectedIndex: PropTypes.number,
+    lineColor: PropTypes.any,
+    lineGradientColorFrom: PropTypes.any,
+    lineGradientColorTo: PropTypes.any,
   },
 };
 
@@ -81,6 +86,26 @@ class Item extends React.Component {
     return null;
   }
 }
+
+WheelCurvedPicker.propTypes = {
+  ...View.propTypes,
+  data: PropTypes.array,
+  textColor: ColorPropType,
+  textSize: PropTypes.number,
+  itemStyle: PropTypes.object,
+  itemSpace: PropTypes.number,
+  onValueChange: PropTypes.func,
+  selectedValue: PropTypes.any,
+  selectedIndex: PropTypes.number,
+  lineColor: PropTypes.any,
+  lineGradientColorFrom: PropTypes.any,
+  lineGradientColorTo: PropTypes.any,
+};
+
+Item.propTypes = {
+  value: PropTypes.any, // string or integer basically
+  label: PropTypes.string,
+};
 
 WheelCurvedPicker.Item = Item;
 
